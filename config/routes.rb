@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   post '/confirm_friendship', to: 'users#confirm_friendship'
+  get '/reject_friendship/:id', to: 'users#reject_friendship', as: 'reject_friendship'
 
   resources :users, only: [:index, :show] do
     resources :friendships, only: [:create]

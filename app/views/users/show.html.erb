@@ -7,7 +7,7 @@
         <%= render @posts %>
       </ul>
     </article>
-    <% if @user == current_user %>
+    <% if @user == current_user && has_pending_friend_request(current_user) %>
       <aside class="user-page-aside">
         <div class="pending-friends-list">
           <h3 class="friends-list-header">Pending Friend Requests</h3>
@@ -21,7 +21,7 @@
                   <%= form.submit 'Accept', class: 'link-btn' %>
                 <% end %>
               </div>
-              <a href="#" class="link-control alert-text">Reject</a>
+              <%= link_to 'Reject', reject_friendship_path(friend), class: 'link-control'  %>
             </div>
             <hr>
           <% end %>
