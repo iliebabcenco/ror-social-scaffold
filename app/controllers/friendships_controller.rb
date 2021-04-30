@@ -8,10 +8,4 @@ class FriendshipsController < ApplicationController
       redirect_to users_path, alert: invitation.errors.full_messages.join('. ').to_s
     end
   end
-
-  private
-
-    def friendship_param
-
-    end
 end
