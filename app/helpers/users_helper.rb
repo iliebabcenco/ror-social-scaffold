@@ -3,7 +3,7 @@ module UsersHelper
     !(user1.id == user2.id || user1.friends.include?(user2))
   end
 
-  def has_pending_friend_request(user)
-    user.received_requests.size > 0
+  def pending_friend_request?(user)
+    user.received_requests.size.positive?
   end
 end

@@ -199,6 +199,38 @@ form {
   }
 }
 
+.invite-friend-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+
+  form {
+    margin: 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input[type="submit"] {
+      background-color: transparent;
+      color: $primary-color-dark;
+      width: auto;
+      border: none;
+      padding: 0;
+      text-transform: none;
+      font-weight: normal;
+      font-size: 0.7em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: transparent;
+        color: $primary-color-dark;
+      }
+    }
+  }
+}
+
 .title {
   text-align: center;
   margin-bottom: 16px;
@@ -341,38 +373,6 @@ form {
 .user-row {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-}
-
-.invite-friend-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 5px;
-
-  form {
-    margin: 0;
-    width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    input[type="submit"] {
-      background-color: transparent;
-      color: $primary-color-dark;
-      width: auto;
-      border: none;
-      padding: 0;
-      text-transform: none;
-      font-weight: normal;
-      font-size: 0.7em;
-      cursor: pointer;
-
-      &:hover {
-        background-color: transparent;
-        color: $primary-color-dark;
-      }
-    }
-  }
 }
 
 .link-controls {

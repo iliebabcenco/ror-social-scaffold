@@ -46,11 +46,11 @@ class User < ApplicationRecord
   def reject_friend(id)
     friendship = invited_friendships.find_by_initiator_id(id)
     return friendship.destroy unless friendship.nil?
+
     false
   end
 
   def friend?(user)
     confirmed_friends.include?(user)
   end
-
 end
