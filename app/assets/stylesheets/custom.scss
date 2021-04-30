@@ -212,7 +212,7 @@ form {
     align-items: center;
     justify-content: center;
 
-    input[type="submit"] {
+    .link-btn {
       background-color: transparent;
       color: $primary-color-dark;
       width: auto;
