@@ -285,9 +285,16 @@ form {
     font-size: 1.2em;
   }
 
+  .profile-link-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+  }
+
   .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
+    font-size: 0.7em;
     color: $primary-color-dark;
   }
 }
@@ -322,9 +329,52 @@ form {
   }
 }
 
+.user-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.invite-friend-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+
+  form {
+    margin: 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input[type="submit"] {
+      background-color: transparent;
+      color: $primary-color-dark;
+      width: auto;
+      border: none;
+      padding: 0;
+      text-transform: none;
+      font-weight: normal;
+      font-size: 0.7em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: transparent;
+        color: $primary-color-dark;
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 480px) {
   form {
     width: 60%;
+  }
+
+  .invite-friend-form {
+    form {
+      width: auto;
+    }
   }
 
   .new_post,
@@ -338,6 +388,12 @@ form {
 @media (min-width: 780px) {
   form {
     width: 40%;
+  }
+
+  .invite-friend-form {
+    form {
+      width: auto;
+    }
   }
 
   .new_post,

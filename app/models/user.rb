@@ -15,6 +15,10 @@ class User < ApplicationRecord
   has_many :friends_as_invitee, through: :invited_friendships, source: :initiator
 
   def friends
+    friends_as_initiator + friends_as_invitee
+  end
+
+  def confirmed_friends
     friends_as_initiator.merge(Friendship.confirmed) + friends_as_invitee.merge(Friendship.confirmed)
   end
 
@@ -39,7 +43,7 @@ class User < ApplicationRecord
   end
 
   def friend?(user)
-    friends.include?(user)
+    confirmed_friends.include?(user)
   end
 
 end

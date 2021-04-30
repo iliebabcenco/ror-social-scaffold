@@ -51,7 +51,6 @@ group :test do
   gem 'rspec'
   gem "capybara"
   gem 'selenium-webdriver'
-  gem 'rspec-rails'
   gem 'webdrivers'
 end
 
