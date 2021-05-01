@@ -9,10 +9,6 @@ class UsersController < ApplicationController
     # <%= #link_to 'Reject%', destroy_friendship_url(@user.fri) %>
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
-    return unless @user.id == current_user.id
-
-    @friends_ids = @user.confirmed_friends.map(&:id)
-    @posts += Post.where('posts.user_id in (?)', @friends_ids).ordered_by_most_recent
   end
 
   def confirm_friendship

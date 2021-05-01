@@ -1,5 +1,11 @@
 <section class="user-section">
     <h2><%= "Name: #{@user.name}" %></h2>
+    <% if include_invite_link?(current_user, @user) %>
+      <%= form_for(current_user.initiated_friendships.new, url: user_friendships_path(current_user)) do |form| %>
+        <%= form.hidden_field :invitee_id, value: @user.id %>
+        <%= form.submit 'Send Invite', class: 'link-btn' %>
+      <% end %>
+    <% end %>
     <div class="user-page-wrap flex">
         <article class="timeline flex-1">
             <h3>Recent posts:</h3>
