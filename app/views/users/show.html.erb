@@ -1,9 +1,38 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
+    <h2><%= "Name: #{@user.name}" %></h2>
+    <% if include_invite_link?(current_user, @user) %>
+      <%= form_for(current_user.initiated_friendships.new, url: user_friendships_path(current_user)) do |form| %>
+        <%= form.hidden_field :invitee_id, value: @user.id %>
+        <%= form.submit 'Send Invite', class: 'link-btn' %>
+      <% end %>
+    <% end %>
+    <div class="user-page-wrap flex">
+        <article class="timeline flex-1">
+            <h3>Recent posts:</h3>
+            <ul class="posts">
+                <%= render @posts %>
+            </ul>
+        </article>
+        <% if @user == current_user && pending_friend_request?(current_user) %>
+        <aside class="user-page-aside">
+            <div class="pending-friends-list">
+                <h3 class="friends-list-header">Pending Friend Requests</h3>
+                <% @user.received_requests.each do |friend| %>
+                <p><%= friend.name %></p>
+                <div class="pending_friend_links link-controls has-form">
+                    <%= link_to 'View User', user_path(@user), class: 'link-control' %>
+                    <div class='accept-friend-form'>
+                        <%= form_with url: confirm_friendship_path do |form| %>
+                        <%= form.hidden_field :friend_id, value: friend.id %>
+                        <%= form.submit 'Accept', class: 'link-btn' %>
+                        <% end %>
+                    </div>
+                    <%= link_to 'Reject', reject_friendship_path(friend), class: 'link-control'  %>
+                </div>
+                <hr>
+                <% end %>
+            </div>
+        </aside>
+        <% end %>
+    </div>
 </section>

@@ -5,6 +5,7 @@ $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
+$alert-color: #f6cfc6;
 
 * {
   margin: 0;
@@ -33,6 +34,14 @@ ul {
 a {
   text-decoration: none;
   color: $primary-color-text;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 .nav {
@@ -90,7 +99,7 @@ a {
 }
 
 .alert {
-  background-color: #f6cfc6;
+  background-color: $alert-color;
 }
 
 .errors {
@@ -190,6 +199,38 @@ form {
   }
 }
 
+.invite-friend-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+
+  form {
+    margin: 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .link-btn {
+      background-color: transparent;
+      color: $primary-color-dark;
+      width: auto;
+      border: none;
+      padding: 0;
+      text-transform: none;
+      font-weight: normal;
+      font-size: 0.7em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: transparent;
+        color: $primary-color-dark;
+      }
+    }
+  }
+}
+
 .title {
   text-align: center;
   margin-bottom: 16px;
@@ -285,9 +326,16 @@ form {
     font-size: 1.2em;
   }
 
+  .profile-link-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+  }
+
   .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
+    font-size: 0.7em;
     color: $primary-color-dark;
   }
 }
@@ -322,9 +370,81 @@ form {
   }
 }
 
+.user-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.link-controls {
+  display: flex;
+  align-content: flex-end;
+  margin: 10px 0;
+  font-weight: bold;
+
+  &.has-form {
+    form {
+      margin: 0;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      input[type="submit"] {
+        background-color: transparent;
+        color: $primary-color-dark;
+        width: auto;
+        border: none;
+        padding: 0;
+        text-transform: none;
+        font-size: 0.8em;
+        cursor: pointer;
+
+        &:hover {
+          background-color: transparent;
+          color: $primary-color-dark;
+        }
+      }
+    }
+  }
+
+  & > * {
+    display: flex;
+    align-items: flex-end;
+    padding: 0 10px;
+  }
+
+  .link-control {
+    color: $primary-color;
+    font-size: 0.8em;
+
+    &.alert-text {
+      color: $alert-color;
+    }
+  }
+}
+
+.user-page-aside {
+  padding: 20px;
+  border: 1px solid rgb(224, 231, 236);
+  border-radius: 3px;
+  margin-left: 30px;
+
+  .friends-list-header {
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px dotted rgb(224, 231, 236);
+  }
+}
+
 @media only screen and (min-width: 480px) {
   form {
     width: 60%;
+  }
+
+  .invite-friend-form {
+    form {
+      width: auto;
+    }
   }
 
   .new_post,
@@ -338,6 +458,12 @@ form {
 @media (min-width: 780px) {
   form {
     width: 40%;
+  }
+
+  .invite-friend-form {
+    form {
+      width: auto;
+    }
   }
 
   .new_post,
