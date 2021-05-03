@@ -1,10 +1,10 @@
 <section class="user-section">
     <h2><%= "Name: #{@user.name}" %></h2>
     <% if include_invite_link?(current_user, @user) %>
-      <%= form_for(current_user.initiated_friendships.new, url: user_friendships_path(current_user)) do |form| %>
-        <%= form.hidden_field :invitee_id, value: @user.id %>
-        <%= form.submit 'Send Invite', class: 'link-btn' %>
-      <% end %>
+    <%= form_for(current_user.initiated_friendships.new, url: user_friendships_path(current_user)) do |form| %>
+    <%= form.hidden_field :invitee_id, value: @user.id %>
+    <%= form.submit 'Send Invite', class: 'link-btn' %>
+    <% end %>
     <% end %>
     <div class="user-page-wrap flex">
         <article class="timeline flex-1">
@@ -20,9 +20,9 @@
                 <% @user.received_requests.each do |friend| %>
                 <p><%= friend.name %></p>
                 <div class="pending_friend_links link-controls has-form">
-                    <%= link_to 'View User', user_path(@user), class: 'link-control' %>
+                    <%= link_to 'View User', user_path(friend), class: 'link-control' %>
                     <div class='accept-friend-form'>
-                        <%= form_with url: confirm_friendship_path do |form| %>
+                        <%= form_with url: confirm_friendship_path, method: :post do |form| %>
                         <%= form.hidden_field :friend_id, value: friend.id %>
                         <%= form.submit 'Accept', class: 'link-btn' %>
                         <% end %>
@@ -34,5 +34,21 @@
             </div>
         </aside>
         <% end %>
+
+        <% if @user == current_user && !@user.confirmed_friends.empty? %>
+        <aside class="user-page-aside">
+            <div class="pending-friends-list">
+                <h3 class="friends-list-header">Your Friends</h3>
+                <% @user.confirmed_friends.each do |friend| %>
+                <div class="pending_friend_links link-controls has-form">
+                    <%= link_to friend.name, user_path(friend), class: 'link-control' %>
+                    <%= link_to 'Remove', reject_friendship_path(friend), class: 'link-control'  %>
+                </div>
+                <hr>
+                <% end %>
+            </div>
+        </aside>
+        <% end %>
+
     </div>
 </section>

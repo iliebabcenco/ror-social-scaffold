@@ -1,7 +1,9 @@
 class FriendshipsController < ApplicationController
   def create
-    h1 = { :user_id => current_user.id, :friend_id => params[:friendship][:invitee_id], :initiator_id => current_user.id, :confirmed => nil }
-    h2 = { :user_id => params[:friendship][:invitee_id], :friend_id => current_user.id, :initiator_id => current_user.id, :confirmed => nil  }
+    friend_id = params[:user][:invitee_id]
+    #render json: params
+    h1 = { :user_id => current_user.id, :friend_id => friend_id, :initiator_id => current_user.id, :confirmed => nil }
+    h2 = { :user_id => friend_id, :friend_id => current_user.id, :initiator_id => current_user.id, :confirmed => nil  }
     begin
       ActiveRecord::Base.transaction do
         Friendship.create!(h1)
