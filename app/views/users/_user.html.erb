@@ -1,14 +1,7 @@
 <li class="user-row">
-  Name: <%= user.name %>
-  <div class="profile-link-wrap">
-    <%= link_to 'View Profile',  user_path(user), class: 'profile-link' %>
-  </div>
-  <div class='invite-friend-form'>
-    <% if include_invite_link?(current_user, user) %>
-      <%= form_for(current_user.initiated_friendships.new, url: user_friendships_path(current_user)) do |form| %>
-        <%= form.hidden_field :invitee_id, value: user.id %>
-        <%= form.submit 'Send Invite', class: 'link-btn' %>
-      <% end %>
-    <% end %>
-  </div>
+    Name: <%= user.name %>
+    <div class="profile-link-wrap">
+        <%= link_to 'View Profile',  user_path(user), class: 'profile-link' %>
+    </div>
+    <%= render_invite_link(current_user, user, "invite-friend-form") %>
 </li>

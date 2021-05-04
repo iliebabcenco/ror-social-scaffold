@@ -8,49 +8,56 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :initiated_friendships, foreign_key: :initiator_id, class_name: 'Friendship'
-  has_many :friends_as_initiator, through: :initiated_friendships, source: :invitee
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships, source: :friend
 
-  has_many :invited_friendships, foreign_key: :invitee_id, class_name: 'Friendship'
-  has_many :friends_as_invitee, through: :invited_friendships, source: :initiator
-
-  def friends
-    friends_as_initiator + friends_as_invitee
+  def received_requests
+    friends.where('NOT initiator_id = ?', id).merge(Friendship.pending)
   end
 
   def confirmed_friends
-    friends_as_initiator.merge(Friendship.confirmed) + friends_as_invitee.merge(Friendship.confirmed)
+    friends.merge(Friendship.confirmed)
   end
 
-  def pending_friends
-    friends_as_initiator.merge(Friendship.pending) + friends_as_invitee.merge(Friendship.pending)
-  end
+  def confirm_friend(friend_id)
+    friendship1 = Friendship.where('user_id = ? AND friend_id = ?', id, friend_id).first
+    friendship2 = Friendship.where('user_id = ? AND friend_id = ?', friend_id, id).first
+    result = true
+    return false if friendship1.nil? || friendship2.nil?
 
-  def sent_requests
-    friends_as_initiator.merge(Friendship.pending)
-  end
-
-  def received_requests
-    friends_as_invitee.merge(Friendship.pending)
-  end
-
-  def confirm_friend(id)
-    friendship = invited_friendships.find_by_initiator_id(id)
-    unless friendship.nil?
-      friendship.confirmed = true
-      friendship.save
+    friendship1.confirmed = true
+    friendship2.confirmed = true
+    begin
+      ActiveRecord::Base.transaction do
+        friendship1.save!
+        friendship2.save!
+      end
+    rescue ActiveRecord::Rollback
+      result = false
     end
-    friendship
+
+    result
   end
 
-  def reject_friend(id)
-    friendship = invited_friendships.find_by_initiator_id(id)
-    return friendship.destroy unless friendship.nil?
-
-    false
+  def reject_friend(friend_id)
+    result = true
+    friendship1 = Friendship.where('user_id = ? AND friend_id = ?', id, friend_id).first
+    friendship2 = Friendship.where('friend_id = ? AND user_id = ?', id, friend_id).first
+    begin
+      ActiveRecord::Base.transaction do
+        return friendship1.destroy && friendship2.destroy unless friendship1.nil? || friendship2.nil?
+      end
+    rescue ActiveRecord::Rollback
+      result = false
+    end
+    result
   end
 
   def friend?(user)
     confirmed_friends.include?(user)
+  end
+
+  def friends_and_own_posts
+    Post.where(user: (confirmed_friends.to_a << self))
   end
 end

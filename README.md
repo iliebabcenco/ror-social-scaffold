@@ -51,6 +51,24 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
+### How it looks
+
+#### All Users Page
+
+![](app/assets/images/4.png)
+
+#### Timeline Page
+
+![](app/assets/images/1.png)
+
+#### My Page
+
+![](app/assets/images/2.png)
+
+#### User's Page
+
+![](app/assets/images/3.png)
+
 ### Run tests
 
 ```
@@ -59,7 +77,7 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+The project is deployed on [Heroku](https://dashboard.heroku.com/) You can open a live version [there](https://best-social-media.herokuapp.com/).
 
 ## Authors
 

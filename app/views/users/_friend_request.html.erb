@@ -1,0 +1,16 @@
+<div class="friend-request-wrap">
+  <div>
+    <%= gravatar_image_tag(friend.email, alt: 'Profile Picture', class: 'avatar avatar-sm') %>
+  </div>
+  <h2 class="profile-username"><%= friend.name %></h2>
+  <div class="pending_friend_links link-controls has-form">
+    <%= link_to 'View User', user_path(friend), class: 'link-control' %>
+    <div class='accept-friend-form'>
+      <%= form_with url: confirm_friendship_path, method: :post do |form| %>
+      <%= form.hidden_field :friend_id, value: friend.id %>
+      <%= form.submit 'Accept', class: 'link-btn' %>
+      <% end %>
+    </div>
+    <%= link_to 'Reject', reject_friendship_path(friend), class: 'link-control'  %>
+  </div>
+</div>

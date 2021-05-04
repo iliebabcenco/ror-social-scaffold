@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
+$primary-color-dark: #a76e24;
+$primary-color: #cc8a35;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
 $alert-color: #f6cfc6;
+$color-light: #f0f5fb;
 
 * {
   margin: 0;
@@ -44,17 +45,26 @@ a {
   flex: 1;
 }
 
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   padding: 16px 48px;
-  background-color: $primary-color-dark;
+  background: #d1913c;
+  background: linear-gradient(to right, #ffd194, #d1913c);
   color: $primary-color-light;
 
   a {
-    color: $primary-color-light;
+    color: #2c4229;
     text-transform: uppercase;
-    font-weight: 900;
+    font-weight: 700;
   }
 
   .active a {
@@ -66,7 +76,7 @@ a {
   }
 
   .menu {
-    width: 80%;
+    flex: 1;
     justify-content: space-between;
 
     .menu-item {
@@ -239,10 +249,11 @@ form {
 
 .timeline {
   width: 100%;
-  margin: 16px 0;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid $color-light;
 
   h3 {
     margin: 8px 0;
@@ -342,7 +353,7 @@ form {
 
 .user-section {
   width: 100%;
-  margin-left: 16px;
+  padding: 0 30px;
 
   h2 {
     text-transform: capitalize;
@@ -411,6 +422,10 @@ form {
     display: flex;
     align-items: flex-end;
     padding: 0 10px;
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 
   .link-control {
@@ -421,6 +436,12 @@ form {
       color: $alert-color;
     }
   }
+}
+
+.friend-request-wrap {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $color-light;
 }
 
 .user-page-aside {
@@ -434,6 +455,39 @@ form {
     margin-bottom: 15px;
     border-bottom: 1px dotted rgb(224, 231, 236);
   }
+
+  .friends-list {
+    margin-top: 25px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  border: 1px solid $color-light;
+
+  &.avatar-bg {
+    width: 64px;
+    height: 64px;
+  }
+
+  &.avatar-sm {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.profile-username {
+  font-size: 0.9rem;
+  color: #263f65;
+}
+
+.empty-list-info {
+  padding: 10px;
+  background-color: $color-light;
 }
 
 @media only screen and (min-width: 480px) {
@@ -449,9 +503,15 @@ form {
 
   .new_post,
   .timeline,
-  .users-section,
+  .users-section {
+    width: 80%;
+  }
+
   .user-section {
-    width: 70%;
+    .timeline {
+      flex: 1;
+      width: 100%;
+    }
   }
 }
 
@@ -467,9 +527,17 @@ form {
   }
 
   .new_post,
-  .timeline,
   .users-section,
+  .user-section,
+  .timeline {
+    width: 760px;
+    padding: 0;
+  }
+
   .user-section {
-    width: 50%;
+    .timeline {
+      flex: 1;
+      width: 100%;
+    }
   }
 }
