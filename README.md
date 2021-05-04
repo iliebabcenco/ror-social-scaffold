@@ -51,6 +51,24 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
+### How it looks
+
+#### All Users Page
+
+![](app/assets/images/1.png)
+
+#### Timeline Page
+
+![](app/assets/images/2.png)
+
+#### My Page
+
+![](app/assets/images/3.png)
+
+#### User's Page
+
+![](app/assets/images/4.png)
+
 ### Run tests
 
 ```
