@@ -7,11 +7,6 @@
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-## Live Demo
-
-TBA
-
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -46,7 +41,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
 
-
 ### Usage
 
 Start server with:
@@ -57,21 +51,43 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
+### How it looks
+
+#### All Users Page
+
+![](app/assets/images/4.png)
+
+#### Timeline Page
+
+![](app/assets/images/1.png)
+
+#### My Page
+
+![](app/assets/images/2.png)
+
+#### User's Page
+
+![](app/assets/images/3.png)
+
 ### Run tests
 
 ```
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
 ### Deployment
 
-TBA
+The project is deployed on [Heroku](https://dashboard.heroku.com/) You can open a live version [there](https://best-social-media.herokuapp.com/).
 
 ## Authors
 
-TBA
+👤 **Ilie Babcenco**
+
+[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/iliebabcenco) [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ilie-babcenco-72459a1b1/) [![](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/BabcencoIlie)
+
+👤 **Obetta Francis**
+
+[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/chasscepts) [![](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/chasscepts) [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chasscepts/)
 
 ## 🤝 Contributing
 
@@ -85,9 +101,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Microverse Community.
+- All whose works were used in this project.
 
 ## 📝 License
 
-TBA
-
+[MIT](./LICENSE)

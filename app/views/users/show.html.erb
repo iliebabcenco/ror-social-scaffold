@@ -1,9 +1,18 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
+    <div>
+        <%= gravatar_image_tag(@user.email, alt: 'Profile Picture', class: 'avatar avatar-bg', title: 'Your profile picture is linked to gravatar.com through your email address.') %>
+    </div>
+    <h2 class="profile-username mb-10"><%= @user.name %></h2>
+
+    <%= render_invite_link(current_user, @user) %>
+
+    <div class="user-page-wrap flex">
+        <article class="timeline flex-1">
+            <h3>Recent posts:</h3>
+            <ul class="posts">
+                <%= render @posts %>
+            </ul>
+        </article>
+        <%= user_side_bar(@user) %>
+    </div>
 </section>

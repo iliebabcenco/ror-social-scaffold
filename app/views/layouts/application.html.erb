@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>RorSocialScaffold</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
+</head>
+
+<body>
     <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
-      <div class="menu">
-        <div class="menu-item">
-          <%= menu_link_to 'Timeline', posts_path %>
+        <%= link_to 'Stay in touch', root_path %>
+        <div class="menu">
+            <div class="menu-item">
+                <%= menu_link_to 'Timeline', posts_path %>
+            </div>
+            <div class="menu-item">
+                <%= menu_link_to 'All users', users_path %>
+            </div>
+            <%= current_user_page_link(current_user) %>
         </div>
-        <div class="menu-item">
-          <%= menu_link_to 'All users', users_path %>
-        </div>
-      </div>
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
+        <%= login_check(current_user) %>
     </nav>
-    <% if notice.present? %>
-      <div class="notice">
-        <p> <%= notice %> </p>
-      </div>
-    <% end %>
-    <% if alert.present? %>
-      <div class="alert">
-        <p> <%= alert %> </p>
-      </div>
-    <% end %>
+    <%= render_notification(notice, 'notice') %>
+    <%= render_notification(alert, 'alert') %>
     <main class="main">
-      <%= yield %>
+        <%= yield %>
     </main>
-  </body>
+</body>
+
 </html>
