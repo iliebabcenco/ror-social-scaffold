@@ -57,11 +57,8 @@ a {
   display: flex;
   justify-content: space-between;
   padding: 16px 48px;
-  /* background-color: $primary-color-dark; */
-  background: #D1913C;
-  background: -webkit-linear-gradient(to right, #FFD194, #D1913C);
-  background: linear-gradient(to right, #FFD194, #D1913C);
-
+  background: #d1913c;
+  background: linear-gradient(to right, #ffd194, #d1913c);
   color: $primary-color-light;
 
   a {

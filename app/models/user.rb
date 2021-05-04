@@ -58,6 +58,6 @@ class User < ApplicationRecord
   end
 
   def friends_and_own_posts
-    Post.where(user: (self.confirmed_friends.to_a << self))
- end
+    Post.where(user: (confirmed_friends.to_a << self))
+  end
 end

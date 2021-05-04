@@ -55,19 +55,19 @@ Open `http://localhost:3000/` in your browser.
 
 #### All Users Page
 
-![](app/assets/images/1.png)
+![](app/assets/images/4.png)
 
 #### Timeline Page
 
-![](app/assets/images/2.png)
+![](app/assets/images/1.png)
 
 #### My Page
 
-![](app/assets/images/3.png)
+![](app/assets/images/2.png)
 
 #### User's Page
 
-![](app/assets/images/4.png)
+![](app/assets/images/3.png)
 
 ### Run tests
 

@@ -27,6 +27,7 @@ module UsersHelper
 
   def render_invite_link(user1, user2)
     return nil unless include_invite_link?(user1, user2)
+
     render 'invite_form', user: user2, current_user: user1
   end
 end
