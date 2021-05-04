@@ -5,11 +5,11 @@ RSpec.describe Friendship, type: :model do
     let(:initiator) { User.create!(name: 'initiator', password: '123456', email: 'mail@mail.com') }
     let(:invitee) { User.create!(name: 'invitee', password: '123456', email: 'mail2@mail.com') }
     it 'checking pending friends list' do
-      Friendship.create!(initiator: initiator, invitee: invitee, confirmed: nil)
+      Friendship.create!(user_id: initiator.id, friend_id: invitee.id, initiator_id: initiator.id, confirmed: nil)
       expect(Friendship.pending.size).to eq 1
     end
     it 'checking confirmed friends list' do
-      Friendship.create!(initiator: initiator, invitee: invitee, confirmed: true)
+      Friendship.create!(user_id: initiator.id, friend_id: invitee.id, initiator_id: initiator.id, confirmed: true)
       expect(Friendship.confirmed.size).to eq 1
     end
   end

@@ -11,15 +11,7 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships, source: :friend
   has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
-  #has_many :confirmed_friends, through: :confirm_friendships, source: :friend
   has_many :pending_friendships, -> { where confirmed: nil }, class_name: 'Friendship'
-  #has_many :pending_friends, through: :pending_friendships, source: :friend
-
-
-  # def received_requests
-  #   pending_friends.where('NOT initiator_id = ?', id)
-  # end
-
   def received_requests
     friends.where('NOT initiator_id = ?', id).merge(Friendship.pending)
   end
@@ -32,9 +24,8 @@ class User < ApplicationRecord
     friendship1 = Friendship.where('user_id = ? AND friend_id = ?', id, friend_id).first
     friendship2 = Friendship.where('user_id = ? AND friend_id = ?', friend_id, id).first
     result = true
-    if friendship1.nil? || friendship2.nil?
-      return false
-    end
+    return false if friendship1.nil? || friendship2.nil?
+
     friendship1.confirmed = true
     friendship2.confirmed = true
     begin

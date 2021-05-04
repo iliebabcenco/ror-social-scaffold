@@ -9,16 +9,19 @@ module UsersHelper
 
   def user_side_bar(user)
     return unless user.id == current_user.id
+
     render 'user_page_aside', friend_requests: user.received_requests, friends: user.confirmed_friends
   end
 
   def render_friend_requests(friends)
     return render 'empty_list_info', info: 'You do not have any pending requests' if friends.empty?
-    safe_join friends.map { |friend| render 'friend_request', friend: friend }
+
+    safe_join(friends.map { |friend| render 'friend_request', friend: friend })
   end
 
   def render_friends(friends)
     return render 'empty_list_info', info: 'You have not made any friends yet.' if friends.empty?
-    safe_join friends.map { |friend| render 'friend', friend: friend }
+
+    safe_join(friends.map { |friend| render 'friend', friend: friend })
   end
 end

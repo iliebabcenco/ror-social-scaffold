@@ -13,8 +13,9 @@ class UsersController < ApplicationController
   def confirm_friendship
     friendship = current_user.confirm_friend(params[:friend_id])
     if friendship
-      redirect_to user_path(current_user),notice: 'Friend successfully confirmed'
-    else friendship.errors
+      redirect_to user_path(current_user), notice: 'Friend successfully confirmed'
+    else
+      friendship.errors
       redirect_to user_path(current_user), alert: 'Could not find friend request'
     end
   end
