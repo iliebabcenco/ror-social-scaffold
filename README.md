@@ -77,7 +77,7 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+The project is deployed on [Heroku](https://dashboard.heroku.com/) You can open a live version [there](https://best-social-media.herokuapp.com/).
 
 ## Authors
 
