@@ -1,4 +1,10 @@
-<div class="pending_friend_links link-controls has-form">
-  <%= link_to friend.name, user_path(friend), class: 'link-control' %>
-  <%= link_to 'Remove', reject_friendship_path(friend), class: 'link-control'  %>
+<div class="friend-wrap">
+  <div>
+    <%= gravatar_image_tag(friend.email, alt: 'Profile Picture', class: 'avatar avatar-sm') %>
+  </div>
+  <h2 class="profile-username"><%= friend.name %></h2>
+  <div class="pending_friend_links link-controls has-form">
+    <%= link_to 'View Page', user_path(friend), class: 'link-control' %>
+    <%= link_to 'Remove', reject_friendship_path(friend), class: 'link-control'  %>
+  </div>
 </div>

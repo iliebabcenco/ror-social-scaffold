@@ -14,13 +14,11 @@ module UsersHelper
 
   def render_friend_requests(friends)
     return render 'empty_list_info', info: 'You do not have any pending requests' if friends.empty?
-    partials = friends.map { |friend| render 'friend_request', friend: friend }
-    safe_join partials
+    safe_join friends.map { |friend| render 'friend_request', friend: friend }
   end
 
   def render_friends(friends)
     return render 'empty_list_info', info: 'You have not made any friends yet.' if friends.empty?
-    partials = friends.map { |friend| render 'friend_request', friend: friend }
-    safe_join partials
+    safe_join friends.map { |friend| render 'friend', friend: friend }
   end
 end
