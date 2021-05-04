@@ -10,8 +10,7 @@ class User < ApplicationRecord
 
   has_many :friendships
   has_many :friends, through: :friendships, source: :friend
-  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
-  has_many :pending_friendships, -> { where confirmed: nil }, class_name: 'Friendship'
+
   def received_requests
     friends.where('NOT initiator_id = ?', id).merge(Friendship.pending)
   end
@@ -57,4 +56,8 @@ class User < ApplicationRecord
   def friend?(user)
     confirmed_friends.include?(user)
   end
+
+  def friends_and_own_posts
+    Post.where(user: (self.confirmed_friends.to_a << self))
+ end
 end
