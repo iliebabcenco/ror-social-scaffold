@@ -1,7 +1,7 @@
 <li class="user-row">
-  Name: <%= user.name %>
-  <div class="profile-link-wrap">
-    <%= link_to 'View Profile',  user_path(user), class: 'profile-link' %>
-  </div>
-  <%= render_invite_link(current_user, user) %>
+    Name: <%= user.name %>
+    <div class="profile-link-wrap">
+        <%= link_to 'View Profile',  user_path(user), class: 'profile-link' %>
+    </div>
+    <%= render_invite_link(current_user, user, "invite-friend-form") %>
 </li>

@@ -1,21 +1,18 @@
 <section class="user-section">
-  <div>
-    <%= gravatar_image_tag(@user.email, alt: 'Profile Picture', class: 'avatar avatar-bg', title: 'Your profile picture is linked to gravatar.com through your email address.') %>
-  </div>
-  <h2 class="profile-username mb-10"><%= @user.name %></h2>
-  <% if include_invite_link?(current_user, @user) %>
-    <%= form_for(current_user.friends.new, url: user_friendships_path(current_user)) do |form| %>
-      <%= form.hidden_field :invitee_id, value: @user.id %>
-      <%= form.submit 'Send Invite', class: 'link-btn mb-15' %>
-    <% end %>
-  <% end %>
-  <div class="user-page-wrap flex">
-    <article class="timeline flex-1">
-      <h3>Recent posts:</h3>
-      <ul class="posts">
-        <%= render @posts %>
-      </ul>
-    </article>
-    <%= user_side_bar(@user) %>
-  </div>
+    <div>
+        <%= gravatar_image_tag(@user.email, alt: 'Profile Picture', class: 'avatar avatar-bg', title: 'Your profile picture is linked to gravatar.com through your email address.') %>
+    </div>
+    <h2 class="profile-username mb-10"><%= @user.name %></h2>
+
+    <%= render_invite_link(current_user, @user) %>
+
+    <div class="user-page-wrap flex">
+        <article class="timeline flex-1">
+            <h3>Recent posts:</h3>
+            <ul class="posts">
+                <%= render @posts %>
+            </ul>
+        </article>
+        <%= user_side_bar(@user) %>
+    </div>
 </section>

@@ -25,9 +25,9 @@ module UsersHelper
     safe_join(friends.map { |friend| render 'friend', friend: friend })
   end
 
-  def render_invite_link(user1, user2)
+  def render_invite_link(user1, user2, class_name = nil)
     return nil unless include_invite_link?(user1, user2)
 
-    render 'invite_form', user: user2, current_user: user1
+    render 'invite_form', user: user2, current_user: user1, class_name: class_name
   end
 end
