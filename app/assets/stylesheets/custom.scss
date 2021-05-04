@@ -412,6 +412,10 @@ form {
     display: flex;
     align-items: flex-end;
     padding: 0 10px;
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 
   .link-control {

@@ -4,7 +4,7 @@
   </div>
   <h2 class="profile-username"><%= @user.name %></h2>
   <% if include_invite_link?(current_user, @user) %>
-    <%= form_for(current_user.initiated_friendships.new, url: user_friendships_path(current_user)) do |form| %>
+    <%= form_for(current_user.friends.new, url: user_friendships_path(current_user)) do |form| %>
       <%= form.hidden_field :invitee_id, value: @user.id %>
       <%= form.submit 'Send Invite', class: 'link-btn' %>
     <% end %>
