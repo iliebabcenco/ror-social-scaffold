@@ -1,0 +1,4 @@
+<div class="pending_friend_links link-controls has-form">
+  <%= link_to friend.name, user_path(friend), class: 'link-control' %>
+  <%= link_to 'Remove', reject_friendship_path(friend), class: 'link-control'  %>
+</div>

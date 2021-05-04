@@ -21,7 +21,7 @@ class User < ApplicationRecord
   # end
 
   def received_requests
-    friends.merge(Friendship.pending).where('NOT initiator_id = ?', id)
+    friends.where('NOT initiator_id = ?', id).merge(Friendship.pending)
   end
 
   def confirmed_friends
@@ -45,7 +45,7 @@ class User < ApplicationRecord
     rescue ActiveRecord::Rollback
       result = false
     end
-  
+
     result
   end
 

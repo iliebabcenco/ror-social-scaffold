@@ -6,6 +6,7 @@ $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
 $alert-color: #f6cfc6;
+$color-light: #f0f5fb;
 
 * {
   margin: 0;
@@ -423,6 +424,12 @@ form {
   }
 }
 
+.friend-request-wrap {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $color-light;
+}
+
 .user-page-aside {
   padding: 20px;
   border: 1px solid rgb(224, 231, 236);
@@ -434,6 +441,39 @@ form {
     margin-bottom: 15px;
     border-bottom: 1px dotted rgb(224, 231, 236);
   }
+
+  .friends-list {
+    margin-top: 25px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  border: 1px solid $color-light;
+
+  &.avatar-bg {
+    width: 64px;
+    height: 64px;
+  }
+
+  &.avatar-sm {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.profile-username {
+  font-size: 0.9rem;
+  color: #263f65;
+}
+
+.empty-list-info {
+  padding: 10px;
+  background-color: $color-light;
 }
 
 @media only screen and (min-width: 480px) {

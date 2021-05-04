@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # <%= #link_to 'Reject%', destroy_friendship_url(@user.fri) %>
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end
